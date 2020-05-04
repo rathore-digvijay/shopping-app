@@ -1,0 +1,22 @@
+{
+  "name": "ecommerce-app",
+  "version": "1.0.0",
+  "description": "simple demo of ecomm app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digvijay-r/ecommerce-app.git"
+  },
+  "keywords": [
+    "ecomm"
+  ],
+  "author": "Digvijay Rathore",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/digvijay-r/ecommerce-app/issues"
+  },
+  "homepage": "https://github.com/digvijay-r/ecommerce-app#readme"
+}
