@@ -4,6 +4,7 @@
   "description": "simple demo of ecomm app",
   "main": "index.js",
   "scripts": {
+    "devStart": "nodemon ./src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/digvijay-r/ecommerce-app/issues"
   },
-  "homepage": "https://github.com/digvijay-r/ecommerce-app#readme"
+  "homepage": "https://github.com/digvijay-r/ecommerce-app#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
