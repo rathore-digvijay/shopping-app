@@ -1,11 +1,22 @@
 const express = require('express');
 const routes = require('./routes/index.js');
 const mongoConn = require('../database/mongoConnection.js');
+const path = require('path');
+
+const publicDirectoryPath = path.join(__dirname, '../public')
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use('/', routes);
+app.use('/api', routes);
+
+// Setup static directory to serve
+app.use(express.static(publicDirectoryPath))
+
+// Set Application Static Layout
+app.get('*', function (req, res) {
+    res.sendFile(path.join(__dirname + '/public/app/views/index.html')); // Set index.html as layout
+});
 
 // Mongo connection establishment 
 mongoConn.init(function (status) {

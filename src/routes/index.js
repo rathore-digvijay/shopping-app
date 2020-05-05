@@ -3,7 +3,7 @@ var router = express.Router();
 const dbQuery = require('../../database/dbQuery.js')
 
 
-router.get('/', (req, res) => {
+router.get('/abc', (req, res) => {
     dbQuery.findUser({}, function (err, result) {
         console.log("err", err)
         console.log("result", result)
