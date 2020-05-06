@@ -1,9 +1,9 @@
 const express = require('express');
-const routes = require('./routes/index.js');
-const mongoConn = require('../database/mongoConnection.js');
+const routes = require('./src/routes/index.js');
+const mongoConn = require('./src/database/mongoConnection.js');
 const path = require('path');
 
-const publicDirectoryPath = path.join(__dirname, '../public')
+const publicDirectoryPath = path.join(__dirname, '/public')
 
 const app = express();
 const port = process.env.PORT || 3000;

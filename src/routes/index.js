@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const dbQuery = require('../../database/dbQuery.js')
+const dbQuery = require('../database/dbQuery.js');
 
 
 router.get('/', (req, res) => {
