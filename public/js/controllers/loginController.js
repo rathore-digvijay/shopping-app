@@ -1,4 +1,4 @@
-ctrls.controller("loginCtrl", function ($scope, $http, $location) {
+ctrls.controller("loginCtrl", function ($scope, $http, $location, $rootScope) {
     console.log("loginCtrl loaded.");
 
     $scope.login = function () {
@@ -10,6 +10,8 @@ ctrls.controller("loginCtrl", function ($scope, $http, $location) {
             .success(function (res) {
                 console.log("res", res);
                 if (res.success) {
+                    $rootScope.userName = res.result.userName;
+                    $rootScope.role = res.result.role;
                     $location.path('/dashboard');
                 } else {
                     return swal("Error", res.errorInfo, 'error');
