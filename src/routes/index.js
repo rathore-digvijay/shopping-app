@@ -15,4 +15,9 @@ router.post('/registration', (req, res) => {
     registrationService.registerUser(req, res);
 });
 
+router.post('/login', (req, res) => {
+    registrationService.loginPlayer(req, res);
+});
+
+
 module.exports = router;

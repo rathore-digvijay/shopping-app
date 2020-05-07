@@ -1,27 +1,42 @@
+const bcrypt = require('bcrypt');
 const dbQuery = require('../../database/dbQuery.js');
+
+const saltRounds = 10;
 
 function getPlayerDetails(data) {
     const query = { userName: data.userName };
     return new Promise((resolve, reject) => {
         dbQuery.findUser(query, (err, player) => {
             if (err) {
-                reject(new Error('Something bad happened'));
-            } else {
-                resolve(player);
+                return reject(new Error('Something bad happened'));
             }
+            return resolve(player);
         });
     });
 }
 
-function createPlayer(data) {
-    const playerData = { userName: data.userName, password: data.password };
+function createUser(data, hash) {
+    const userData = {};
+    userData.userName = data.userName;
+    userData.password = hash;
+    userData.role = data.role;
     return new Promise((resolve, reject) => {
-        dbQuery.createPlayer(playerData, (err, player) => {
+        dbQuery.createUser(userData, (err, player) => {
             if (err) {
-                reject(new Error('Error while creating Player'));
-            } else {
-                resolve(player);
+                return reject(new Error('Error while creating Player'));
             }
+            return resolve(player);
+        });
+    });
+}
+
+function encryptPassword(password) {
+    return new Promise((resolve, reject) => {
+        bcrypt.hash(password, saltRounds, (err, hash) => {
+            if (err) {
+                return reject(new Error('Error while encrypting password'));
+            }
+            return resolve(hash);
         });
     });
 }
@@ -35,7 +50,8 @@ async function registerUser(req, res) {
             throw new Error('User already exists with this username.');
         }
         // TODO : Encrypt password
-        await createPlayer(req.body);
+        const hashPassword = await encryptPassword(req.body.password);
+        await createUser(req.body, hashPassword);
         return res.json({ success: true, result: 'User Created' });
     } catch (error) {
         console.error(`Error Name - ${error.name} & message -  ${error.message}`);
@@ -43,6 +59,16 @@ async function registerUser(req, res) {
     }
 }
 
+function validatePassword(password, hash) {
+    return new Promise((resolve, reject) => {
+        bcrypt.compare(password, hash, (err, result) => {
+            if (err) {
+                return reject(new Error('Error in login process'));
+            }
+            return resolve(result);
+        });
+    });
+}
 
 async function loginPlayer(req, res) {
     try {
@@ -51,11 +77,12 @@ async function loginPlayer(req, res) {
             throw new Error('No user found. Kindly register');
         }
         // TODO : Decrypt password and match
-        if (playerDetails.password !== req.body.password) {
-            throw new Error('Incorrect Password.');
+        const passwordInfo = await validatePassword(req.body.password, playerDetails.password);
+        if (!passwordInfo) {
+            throw new Error('Incorrect Password. Try again');
         }
         return res.json({
-            success: true,
+            success: true, result: { userName: playerDetails.userName, role: playerDetails.role },
         });
     } catch (error) {
         console.error(`Error Name - ${error.name} & message -  ${error.message}`);
