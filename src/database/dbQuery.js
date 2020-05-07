@@ -14,4 +14,22 @@ model.createUser = function createUser(data, callback) {
     });
 };
 
+model.countProduct = function countProduct(query, cb) {
+    mongo.dbInst.collection('products').countDocuments(query, (err, result) => {
+        cb(err, result);
+    });
+};
+
+model.insertProductData = function insertProductData(data, callback) {
+    mongo.dbInst.collection('products').insertOne(data, (err, result) => {
+        callback(err, result);
+    });
+};
+
+model.getAllProducts = function getAllProducts(query, cb) {
+    mongo.dbInst.collection('products').find(query).toArray((err, result) => {
+        cb(err, result);
+    });
+};
+
 module.exports = model;

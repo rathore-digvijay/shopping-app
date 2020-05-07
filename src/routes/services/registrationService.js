@@ -3,7 +3,7 @@ const dbQuery = require('../../database/dbQuery.js');
 
 const saltRounds = 10;
 
-function getPlayerDetails(data) {
+function getUserDetails(data) {
     const query = { userName: data.userName };
     return new Promise((resolve, reject) => {
         dbQuery.findUser(query, (err, player) => {
@@ -45,7 +45,7 @@ async function registerUser(req, res) {
     console.log('inside register user');
     console.log(JSON.stringify(req.body));
     try {
-        const playerDetails = await getPlayerDetails(req.body);
+        const playerDetails = await getUserDetails(req.body);
         if (playerDetails) {
             throw new Error('User already exists with this username.');
         }
@@ -72,7 +72,7 @@ function validatePassword(password, hash) {
 
 async function loginPlayer(req, res) {
     try {
-        const playerDetails = await getPlayerDetails(req.body);
+        const playerDetails = await getUserDetails(req.body);
         if (!playerDetails) {
             throw new Error('No user found. Kindly register');
         }
@@ -93,4 +93,5 @@ async function loginPlayer(req, res) {
 module.exports = {
     registerUser,
     loginPlayer,
+    getUserDetails,
 };

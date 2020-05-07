@@ -2,6 +2,8 @@ const express = require('express');
 
 const router = express.Router();
 const registrationService = require('./services/registrationService.js');
+const productService = require('./services/productService.js');
+const productMgmt = require('./services/productMgmt.js');
 
 router.get('/', (req, res) => {
     res.json({
@@ -19,5 +21,12 @@ router.post('/login', (req, res) => {
     registrationService.loginPlayer(req, res);
 });
 
+router.post('/addProduct', (req, res) => {
+    productService.insertProducts(req, res);
+});
+
+router.get('/listProducts', (req, res) => {
+    productMgmt.listProducts(req, res);
+});
 
 module.exports = router;

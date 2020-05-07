@@ -10,3 +10,13 @@ Content-Type: application/json
 
 {"userName": "digvijay", "password": "12345684"}
 
+#######
+
+POST http://localhost:3000/api/addProduct HTTP/1.1
+Content-Type: application/json
+
+{ "userName": "digvijay", "productName": "apple", "price": 500, "description": "free buy" }
+
+######
+
+GET http://localhost:3000/api/listProducts HTTP/1.1
