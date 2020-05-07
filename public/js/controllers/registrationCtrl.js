@@ -11,7 +11,7 @@ ctrls.controller("registerCtrl", function ($scope, $http, $location) {
                 console.log("res", res);
                 if(res.success){
                     swal("Success", res.result, "success");
-                    $location.path('/dashboard');
+                    $location.path('/login');
                 }else{
                     return swal("Error", res.errorInfo, 'error');
                 }
