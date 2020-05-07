@@ -1,17 +1,18 @@
-var express = require('express');
-var router = express.Router();
-const dbQuery = require('../database/dbQuery.js');
+const express = require('express');
 
+const router = express.Router();
+const registrationService = require('./services/registrationService.js');
 
 router.get('/', (req, res) => {
-    dbQuery.findUser({}, function (err, result) {
-        console.log("err", err)
-        console.log("result", result)
-        res.json({
-            title: 'Ecomm App',
-            author: 'Digvijay Rathore'
-        })
-    })
+    res.json({
+        title: 'Ecomm App',
+        author: 'Digvijay Rathore',
+    });
+});
+
+
+router.post('/registration', (req, res) => {
+    registrationService.registerUser(req, res);
 });
 
 module.exports = router;
