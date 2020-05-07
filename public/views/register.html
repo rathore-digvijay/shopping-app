@@ -4,13 +4,18 @@
 
 <!-- Registration Form -->
 <form name="registerForm" role="form">
-    <!-- Email -->
-    <label>Email:</label>
-    <input class="form-control" type="text" name="email" placeholder="please enter email" ng-model="formData.email">
+    <!-- Role -->
+    <label>Register as:</label>
+    <!-- <input class="form-control" type="text" name="email" placeholder="please enter email" ng-model="formData.email"> -->
+    <select class="form-control" name="role" ng-model="formData.role" required>
+        <option value="" style="display:none;">Role</option>
+        <option value="seller">Seller</option>
+        <option value="customer">Customer</option>
+    </select>
     <br>
     <!-- Username -->
     <label>Username:</label>
-    <input class="form-control" type="text" name="username" placeholder="please enter username" ng-model="formData.username">
+    <input class="form-control" type="text" name="username" placeholder="please enter username" ng-model="formData.userName">
     <br>
     <!-- Password -->
     <label>Password:</label>
@@ -20,28 +25,3 @@
     <button class="btn btn-primary" type="submit" ng-click="register()">Register</button>
 </form>
 <!-- Registration Form -->
-
-<br>
-
-<!-- Loading Icon -->
-<div class="jumbotron text-center" ng-show="register.loading">
-    <span class="glyphicon glyphicon-repeat spinner"></span>
-    <p>Loading....</p>
-</div>
-<!-- Loading Icon -->
-
-<br>
-
-<!-- Successful Registration Message -->
-<div class="row show-hide-message" ng-show="register.successMsg">
-    <div class="alert alert-success">{{ register.successMsg }}</div>
-</div>
-<!-- Successful Registration Message -->
-
-<br>
-
-<!-- Failed Registration Message -->
-<div class="row show-hide-message" ng-show="register.errorMsg">
-    <div class="alert alert-danger">{{ register.errorMsg }}</div>
-</div>
-<!-- Failed Registration Message -->

@@ -15,7 +15,7 @@ app.use(express.static(publicDirectoryPath));
 
 // Set Application Static Layout
 app.get('*', (req, res) => {
-    res.sendFile(path.join(`${__dirname}/public/app/views/index.html`)); // Set index.html as layout
+    res.sendFile(path.join(`${__dirname}/public/app/index.html`)); // Set index.html as layout
 });
 
 // Mongo connection establishment
