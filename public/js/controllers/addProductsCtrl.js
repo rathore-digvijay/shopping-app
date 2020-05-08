@@ -26,7 +26,7 @@ ctrls.controller("addProductsCtrl", function ($scope, $rootScope, $location, $ht
                     swal("Product Listed", msg, "success");
                     $location.path('/dashboard');
                 } else {
-                    return swal("Error", res.info, 'error');
+                    return swal("Error", res.errorInfo, 'error');
                 }
             }).error(function (err) {
                 return swal("Error", "Error while adding products!", 'error');

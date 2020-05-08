@@ -49,7 +49,6 @@ function placeOrder(purchaseData) {
 
 async function purchaseProduct(req, res) {
     try {
-        console.log('ok');
         const productData = await getProductDetails(req.body.productId);
         const custInfo = await getUserInfo(req.body.customer);
         const purchaseData = preparePurchaseData(custInfo, productData);
