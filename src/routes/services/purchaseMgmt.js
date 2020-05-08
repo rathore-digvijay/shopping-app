@@ -100,6 +100,9 @@ function updateOrder(userInfo, params) {
             if (err) {
                 return reject(new Error('Error while updating order status'));
             }
+            if (!updateResult.matchedCount) {
+                return reject(new Error('You cannot update this order'));
+            }
             return resolve(updateResult);
         });
     });
