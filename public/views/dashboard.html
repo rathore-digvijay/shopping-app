@@ -5,14 +5,32 @@
 
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#" ng-repeat="x in list">{{x.Heading}}</a>
-        <!-- <a class="navbar-brand" href="#" color="black">Navbar</a>
-        <a class="navbar-brand" href="#" color="black">Navbar</a>
-        <a class="navbar-brand" href="#" color="black">Navbar</a> -->
+        <!-- <a class="navbar-brand" ui-sref="dashboard">List Products</a> -->
+        <a class="navbar-brand" ui-sref="addProducts" ng-if="adminLogin">Add Products</a>
+        <a class="navbar-brand" ui-sref="purchaseList">Purchase List</a>
     </nav>
-    <h4>{{greeting}}</h4>
-</div>
+    <!-- <h4>{{greeting}}</h4> -->
 
-<!-- <div class="page-header">
-    <h2>{{greeting}}</h2>
-</div> -->
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Seller</th>
+                <th>Description</th>
+                <th ng-if="!adminLogin">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="list in productList">
+                <td>{{list.name}}</td>
+                <td>₹ {{list.price}}</td>
+                <td>{{list.seller}}</td>
+                <td>{{list.description}}</td>
+                <td ng-if="!adminLogin">
+                    <button type="button" class="btn btn-info" ng-click="buyProduct(list._id)">Buy</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

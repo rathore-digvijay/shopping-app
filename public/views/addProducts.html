@@ -1,0 +1,30 @@
+<br>
+<div class="page-header">
+    <h1>Add your product.</h1>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" ui-sref="dashboard">List Products</a>
+    <!-- <a class="navbar-brand" ui-sref="addProducts" ng-if="adminLogin">Add Products</a> -->
+    <a class="navbar-brand" ui-sref="purchaseList">Purchase List</a>
+</nav>
+
+<form name="registerForm" role="form">
+    <!-- Product Name -->
+    <label>Product Name:</label>
+    <input class="form-control" type="text" name="productName" placeholder="Please enter Product Name"
+        ng-model="formData.productName">
+    <br>
+    <!-- price -->
+    <label>price:</label>
+    <input class="form-control" type="number" name="price" placeholder="Enter Price of Product"
+        ng-model="formData.price">
+    <br>
+    <!-- description -->
+    <label>description:</label>
+    <input class="form-control" type="text" name="description" placeholder="Enter description of Product"
+        ng-model="formData.description">
+    <br>
+    <!-- Submit/Register Button -->
+    <button class="btn btn-primary" type="submit" ng-click="submitProduct()">Register</button>
+</form>

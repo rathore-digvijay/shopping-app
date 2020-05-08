@@ -23,6 +23,12 @@ var shoppingApp = angular.module("shoppingApp", ["ui.router", "AppCtrls"])
                 data: { pageTitle: '' },
                 controller: "dashboardCtrl",
             })
+            .state('addProducts', {
+                url: "/addProducts",
+                templateUrl: "views/addProducts.html",
+                data: { pageTitle: '' },
+                controller: "addProductsCtrl",
+            })
             .state("state2", {
                 url: "#",
                 template: "<p>State 2</p>",
