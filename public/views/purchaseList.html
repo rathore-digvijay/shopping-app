@@ -1,0 +1,37 @@
+<div class="page-header">
+    <!-- <h2>{{greeting}}</h2> -->
+</div>
+
+
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" ui-sref="dashboard">List Products</a>
+        <a class="navbar-brand" ui-sref="addProducts" ng-if="adminLogin">Add Products</a>
+        <!-- <a class="navbar-brand" ui-sref="purchaseList">Purchase List</a> -->
+    </nav>
+    <!-- <h4>{{greeting}}</h4> -->
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th ng-if="!adminLogin">Seller</th>
+                <th ng-if="adminLogin">Buyer</th>
+                <th>Purchase Status</th>
+                <th ng-if="adminLogin">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="list in dataList">
+                <td>{{list.productName}}</td>
+                <td ng-if="!adminLogin">{{list.seller}}</td>
+                <td ng-if="adminLogin">{{list.customer}}</td>
+                <td>{{list.status}}</td>
+                <td ng-if="adminLogin">
+                    <button type="button" class="btn btn-info" ng-click="changeStatus(list, 'Approved')">Approve</button>
+                    <button type="button" class="btn btn-danger" ng-click="changeStatus(list, 'Rejected')">Reject</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
