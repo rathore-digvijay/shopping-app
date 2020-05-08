@@ -1,6 +1,9 @@
 ctrls.controller("loginCtrl", function ($scope, $http, $location, $rootScope) {
     console.log("loginCtrl loaded.");
 
+    $rootScope.userName = null;
+    $rootScope.role = null;
+
     $scope.login = function () {
         console.log("here inside this login method", $scope.formData);
         if (!$scope.formData || !$scope.formData.userName || !$scope.formData.password) {

@@ -18,7 +18,7 @@
                 <th>Price</th>
                 <th>Seller</th>
                 <th>Description</th>
-                <th ng-if="!adminLogin">Action</th>
+                <th ng-if="customerLogin">Purchase</th>
             </tr>
         </thead>
         <tbody>
@@ -27,7 +27,7 @@
                 <td>₹ {{list.price}}</td>
                 <td>{{list.seller}}</td>
                 <td>{{list.description}}</td>
-                <td ng-if="!adminLogin">
+                <td ng-if="customerLogin">
                     <button type="button" class="btn btn-info" ng-click="buyProduct(list._id)">Buy</button>
                 </td>
             </tr>

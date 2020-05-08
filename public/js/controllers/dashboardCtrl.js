@@ -3,14 +3,15 @@ ctrls.controller("dashboardCtrl", function ($scope, $rootScope, $location, $http
     console.log($rootScope.userName)
     console.log($rootScope.role)
 
-    // if(!$rootScope.userName || !$rootScope.role){
-    //     $location.path('/login');
-    // }
+    if(!$rootScope.userName || !$rootScope.role){
+        console.log("here in check cond")
+        $location.path('/login');
+    }
     
     $scope.showGreeting = false;
-    $rootScope.role = 'customer';
+    // $rootScope.role = 'customer';
     $scope.adminLogin = $rootScope.role == "seller" ? true : false;
-    
+    $scope.customerLogin = $rootScope.role === "customer" ? true : false;
     $scope.getProducts = function () {
         $http.get("/api/listProducts")
         .success(function (res) {

@@ -3,9 +3,9 @@ ctrls.controller("addProductsCtrl", function ($scope, $rootScope, $location, $ht
     console.log($rootScope.userName)
     console.log($rootScope.role)
 
-    // if(!$rootScope.userName || !$rootScope.role){
-    //     $location.path('/login');
-    // }
+    if(!$rootScope.userName || !$rootScope.role){
+        $location.path('/login');
+    }
 
 
     $scope.submitProduct = function () {
