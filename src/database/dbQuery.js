@@ -32,4 +32,10 @@ model.getAllProducts = function getAllProducts(query, cb) {
     });
 };
 
+model.insertPurchaseData = function insertPurchaseData(data, callback) {
+    mongo.dbInst.collection('purchaseList').insertOne(data, (err, result) => {
+        callback(err, result);
+    });
+};
+
 module.exports = model;
