@@ -28,3 +28,12 @@ POST http://localhost:3000/api/placeOrder HTTP/1.1
 Content-Type: application/json
 
 { "productId" : "5eb54d6940b3418395ff945d", "customer": "avc"}
+
+
+######
+
+
+POST http://localhost:3000/api/getPurchaseList HTTP/1.1
+Content-Type: application/json
+
+{"userName": "abc"}

@@ -38,4 +38,10 @@ model.insertPurchaseData = function insertPurchaseData(data, callback) {
     });
 };
 
+model.findPurchaseList = function findPurchaseList(query, cb) {
+    mongo.dbInst.collection('purchaseList').find(query).toArray((err, result) => {
+        cb(err, result);
+    });
+};
+
 module.exports = model;

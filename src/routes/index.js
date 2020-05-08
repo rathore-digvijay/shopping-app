@@ -34,4 +34,10 @@ router.post('/placeOrder', (req, res) => {
     purchaseMgmt.purchaseProduct(req, res);
 });
 
+router.post('/getPurchaseList', (req, res) => {
+    console.log('hereee');
+    purchaseMgmt.getPurchaseList(req, res);
+});
+
+
 module.exports = router;
