@@ -35,9 +35,12 @@ router.post('/placeOrder', (req, res) => {
 });
 
 router.post('/getPurchaseList', (req, res) => {
-    console.log('hereee');
     purchaseMgmt.getPurchaseList(req, res);
 });
 
+
+router.post('/changeOrderStatus', (req, res) => {
+    purchaseMgmt.updateOrderInfo(req, res);
+});
 
 module.exports = router;

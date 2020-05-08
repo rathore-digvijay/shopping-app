@@ -44,4 +44,18 @@ model.findPurchaseList = function findPurchaseList(query, cb) {
     });
 };
 
+model.updateOrderStatus = function updateOrderStatus(query, updateData, cb) {
+    console.log(query);
+    console.log('query');
+    console.log(updateData);
+    console.log('query');
+    mongo.dbInst.collection('purchaseList').updateOne(query, { $set: updateData }, (err, result) => {
+        console.log(err);
+        console.log('query');
+        console.log(result);
+        console.log('query');
+        cb(err, result);
+    });
+};
+
 module.exports = model;

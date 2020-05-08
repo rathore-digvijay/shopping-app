@@ -37,3 +37,11 @@ POST http://localhost:3000/api/getPurchaseList HTTP/1.1
 Content-Type: application/json
 
 {"userName": "abc"}
+
+
+####
+
+POST http://localhost:3000/api/changeOrderStatus HTTP/1.1
+Content-Type: application/json
+
+{"userName" : "digvijay", "purchaseId" : "5eb558a5dbe80a9788b4f637", "status" : "Accepted"}

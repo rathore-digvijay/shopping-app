@@ -30,7 +30,7 @@ function preparePurchaseData(custInfo, productData) {
     purchaseData.productName = productData.name;
     purchaseData.seller = productData.seller;
     purchaseData.customer = custInfo.userName;
-    purchaseData.status = 0; // 0- Order placed, 1- Accepted, 2- Rejected
+    purchaseData.status = 'Order Requested'; // 0- Order placed, 1- Accepted, 2- Rejected
     return purchaseData;
 }
 
@@ -92,7 +92,35 @@ async function getPurchaseList(req, res) {
     }
 }
 
+function updateOrder(userInfo, params) {
+    const query = { _id: ObjectId(params.purchaseId), seller: userInfo.userName };
+    const updateData = { status: params.status };
+    return new Promise((resolve, reject) => {
+        dbQuery.updateOrderStatus(query, updateData, (err, updateResult) => {
+            if (err) {
+                return reject(new Error('Error while updating order status'));
+            }
+            return resolve(updateResult);
+        });
+    });
+}
+
+async function updateOrderInfo(req, res) {
+    try {
+        const userInfo = await getUserInfo(req.body.userName);
+        if (!userInfo) {
+            throw new Error('Sign In to continue!');
+        }
+        await updateOrder(userInfo, req.body);
+        return res.json({ success: true, result: 'Order Updated' });
+    } catch (error) {
+        console.error(`Error Name - ${error.name} & message -  ${error.message}`);
+        return res.json({ success: false, errorInfo: error.message });
+    }
+}
+
 module.exports = {
     purchaseProduct,
     getPurchaseList,
+    updateOrderInfo,
 };
