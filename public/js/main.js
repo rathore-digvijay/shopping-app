@@ -37,7 +37,7 @@ var shoppingApp = angular.module("shoppingApp", ["ui.router", "AppCtrls"])
             })
             .state("state2", {
                 url: "#",
-                template: "<p>State 2</p>",
+                template: "<p>Logout successfull</p>",
                 controller: "Ctrl2"
             });
     });
