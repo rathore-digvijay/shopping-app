@@ -5,7 +5,6 @@
     "production": {
         "host": "127.0.0.1",
         "port": 27017,
-        "dbName": "ecommDb",
-        "url": "mongodb+srv://digvj:37284673@shooppingapp-ctt14.mongodb.net/test?retryWrites=true&w=majority"
+        "dbName": "ecommDb"
     }
 }
