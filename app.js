@@ -24,8 +24,9 @@ mongoConn.init((status) => {
         // mongo connection failed
         process.exit();
     }
-    // Server start
-    app.listen(port, () => {
-        console.log(`Server is up on port ${port}`);
-    });
+});
+
+// Server start
+app.listen(port, () => {
+    console.log(`Server is up on port ${port}`);
 });
