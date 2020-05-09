@@ -3,7 +3,7 @@ const dbConfig = require('./dbConfig.json');
 
 // Connection URL
 const localUrl = `mongodb://${dbConfig.host}:${dbConfig.port}`;
-const { url } = process.env.MONGODB_URI || localUrl;
+const url = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017';
 const options = { useUnifiedTopology: true };
 
 exports.init = (cb) => {
