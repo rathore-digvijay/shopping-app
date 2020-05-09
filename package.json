@@ -2,6 +2,7 @@
   "name": "ecommerce-app",
   "version": "1.0.0",
   "description": "simple demo of ecomm app",
+  "main": "index.js",
   "scripts": {
     "start": "node app.js",
     "devStart": "nodemon app.js"
