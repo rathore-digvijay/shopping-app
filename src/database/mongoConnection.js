@@ -2,8 +2,8 @@ const { MongoClient } = require('mongodb');
 const dbConfig = require('./dbConfig.json');
 
 // Connection URL
-const url = `mongodb://${dbConfig.host}:${dbConfig.port}`;
-// const { url } = dbConfig.production;
+// const url = `mongodb://${dbConfig.host}:${dbConfig.port}`;
+const { url } = dbConfig.production;
 const options = { useUnifiedTopology: true };
 
 exports.init = (cb) => {
@@ -11,6 +11,7 @@ exports.init = (cb) => {
     // Use connect method to connect to the server
     MongoClient.connect(url, options, (err, db) => {
         if (err) {
+            console.log('here');
             return cb(false);
         }
         console.log('Connected successfully to server');

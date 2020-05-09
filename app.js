@@ -22,8 +22,10 @@ app.get('*', (req, res) => {
 mongoConn.init((status) => {
     if (!status) {
         // mongo connection failed
+        console.log('process exit');
         process.exit();
     }
+    console.log('process success');
 });
 
 // Server start
