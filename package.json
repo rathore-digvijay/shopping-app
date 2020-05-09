@@ -4,8 +4,8 @@
   "description": "simple demo of ecomm app",
   "main": "index.js",
   "scripts": {
-    "devStart": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "devStart": "nodemon app.js"
   },
   "repository": {
     "type": "git",
