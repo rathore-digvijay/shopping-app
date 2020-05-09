@@ -2,8 +2,8 @@ const { MongoClient } = require('mongodb');
 const dbConfig = require('./dbConfig.json');
 
 // Connection URL
-// const url = `mongodb://${dbConfig.host}:${dbConfig.port}`;
-const { url } = dbConfig.production;
+const localUrl = `mongodb://${dbConfig.host}:${dbConfig.port}`;
+const { url } = process.env.MONGODB_URI || localUrl;
 const options = { useUnifiedTopology: true };
 
 exports.init = (cb) => {
