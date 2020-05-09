@@ -9,7 +9,6 @@ ctrls.controller("dashboardCtrl", function ($scope, $rootScope, $location, $http
     }
     
     $scope.showGreeting = false;
-    // $rootScope.role = 'customer';
     $scope.adminLogin = $rootScope.role == "seller" ? true : false;
     $scope.customerLogin = $rootScope.role === "customer" ? true : false;
     $scope.getProducts = function () {
@@ -20,7 +19,7 @@ ctrls.controller("dashboardCtrl", function ($scope, $rootScope, $location, $http
                     if(res.result.length > 0){
                         $scope.productList = res.result;
                     }else{
-                        $scope.greeting = "Hi " + $rootScope.userName + ". Have a good day here!! What you want to do?"
+                        $scope.greeting = "Hi " + $rootScope.userName + ",  No Products to show."
                         $scope.showGreeting = true;
                     }
                 }else{

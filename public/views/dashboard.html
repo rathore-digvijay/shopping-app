@@ -9,9 +9,9 @@
         <a class="navbar-brand" ui-sref="addProducts" ng-if="adminLogin">Add Products</a>
         <a class="navbar-brand" ui-sref="purchaseList">Purchase List</a>
     </nav>
-    <!-- <h4>{{greeting}}</h4> -->
+    <h4 ng-if="showGreeting">{{greeting}}</h4>
 
-    <table class="table table-hover">
+    <table class="table table-hover" ng-if="!showGreeting">
         <thead>
             <tr>
                 <th>Product Name</th>

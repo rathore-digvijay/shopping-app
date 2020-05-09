@@ -9,7 +9,6 @@ ctrls.controller("purchaseListCtrl", function ($scope, $rootScope, $location, $h
     }
 
     $scope.showGreeting = false;
-    // $rootScope.role = 'customer';
     $scope.adminLogin = $rootScope.role == "seller" ? true : false;
     $scope.customerLogin = $rootScope.role === "customer" ? true : false;
 
@@ -22,7 +21,7 @@ ctrls.controller("purchaseListCtrl", function ($scope, $rootScope, $location, $h
                     if (res.result.length > 0) {
                         $scope.dataList = res.result;
                     } else {
-                        $scope.greeting = "Hi " + $rootScope.userName + "Nothing in your purchaseList."
+                        $scope.greeting = "Hi " + $rootScope.userName + ",  Nothing in your purchaseList."
                         $scope.showGreeting = true;
                     }
                 } else {
