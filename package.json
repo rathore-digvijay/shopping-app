@@ -22,7 +22,7 @@
   "homepage": "https://github.com/digvijay-r/ecommerce-app#readme",
   "dependencies": {
     "bcrypt": "git+https://github.com/kelektiv/node.bcrypt.js.git#master",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "mongodb": "^3.5.7",
     "node-gyp": "^6.1.0"
   },
